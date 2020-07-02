@@ -32,11 +32,15 @@ const bookSchema = new Schema({
   categories:[{
       type:String
   }],
-  imageLinks:[{
-      type:String
-  }],
+  imageLinks:{},
   language:{
       type:String
+  },
+  price:{
+    type:String
+  },
+  qty:{
+    type:String
   }
 });
 

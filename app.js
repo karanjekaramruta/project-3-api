@@ -38,6 +38,8 @@ app.use((req, res, next) => {
 //all routes
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
+app.use("/", require("./routes/auth/logout"));
 app.use("/", require("./routes/book/add"));
+app.use("/", require("./routes/book/ownedBooks"));
 
 module.exports = app;

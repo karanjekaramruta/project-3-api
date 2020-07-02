@@ -11,25 +11,29 @@ app.use(
 );
 
 app.post("/book/add", (req, res, next) => {
+  debugger
   const {
     title,
     subtitle,
     authors,
-    bookId,
     description,
     publishedDate,
     pageCount,
     averageRating,
     categories,
     imageLinks,
-    language,
-  } = req.body.volumeInfo;
+    language
+  } = req.body.book.volumeInfo;
+
+  let price=req.body.price;
+  let qty=req.body.qty;
+  let bookId = req.body.book.id;
 
   let book = new Book({
     title,
     subtitle,
     authors,
-    bookId,
+    bookId:bookId,
     description,
     publishedDate,
     pageCount,
@@ -37,33 +41,30 @@ app.post("/book/add", (req, res, next) => {
     categories,
     imageLinks,
     language,
+    price:price,
+    qty:qty
   });
 
-  //const userId = req.session.currentUser;
+  const userId = req.session.currentUser._id;
 
   Book.create(book)
     .then((savedBook) => {
       User.findByIdAndUpdate(
         {
-          _id: "5efcaa0363f16a8a34bc7ec2",
+          _id: userId,
         },
         {
           $push: {
             listOfOwnedBooks: savedBook,
           },
         }
-      )
-        .then((user) => {
-          res.status(200).json({ book: savedBook });
-        })
-        .catch((err) => {
-          res
-            .status(500)
-            .json({errorMessage: "error in associating book with user"});
-        });
+      ).then((user) => {
+        res.status(200).json({bookId:savedBook._id});
+      });
     })
     .catch((err) => {
-      res.status(500).json({ errorMessage: "Error in adding a book" });
+      console.log("error while saving a goal", err);
+      next(err);
     });
 });
 
