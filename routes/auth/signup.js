@@ -31,6 +31,7 @@ app.post('/signup', (req, res, next) => {
                             firstname: req.body.firstname,
                             lastname: req.body.lastname,
                             email: req.body.email,
+                            postalCode:req.body.postalCode,
                             password: hash,
 
                         })

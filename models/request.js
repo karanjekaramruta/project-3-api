@@ -3,26 +3,35 @@ const Schema = mongoose.Schema;
 
 const requestSchema = new Schema({
   bookId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Book",
+    required:[true,"book id is required"]
   },
-  requestedBy: {
+  requestedTo: {
       type:String,
       required:[true, "requestedBy is required"]
   },
   requestedFrom: {
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required:[true, "requestedFrom is required"]
   },
   fromDate: {
     type: Date,
     required: [true, "fromDate is required."]
   },
-  toDate:[{
+  toDate:{
     type: Date,
     required: [true, "toDate is required."]
-  }],
-  status:String,
-}, {
+  },
+  status:{
+    type:String,
+    enum: ['Pending', 'Accepted', 'Rejected'],
+    default:'Pending'
+  },
+  comments:String
+}
+, {
   timestamps: true,
 });
 

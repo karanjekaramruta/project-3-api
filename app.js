@@ -41,5 +41,8 @@ app.use("/", require("./routes/auth/login"));
 app.use("/", require("./routes/auth/logout"));
 app.use("/", require("./routes/book/add"));
 app.use("/", require("./routes/book/ownedBooks"));
+app.use("/", require("./routes/request/add"));
+app.use("/", require("./routes/request/all"));
+app.use("/", require("./routes/request/accept"));
 
 module.exports = app;

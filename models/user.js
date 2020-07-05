@@ -22,8 +22,15 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Password is required."],
   },
-  listOfOwnedBooks:[{}]
-}, {
+  listOfOwnedBooks:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Book"
+  }],
+  postalCode:{
+    type:String
+  }
+}, 
+{
   timestamps: true,
 });
 
