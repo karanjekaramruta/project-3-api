@@ -41,6 +41,7 @@ app.use("/", require("./routes/auth/login"));
 app.use("/", require("./routes/auth/logout"));
 app.use("/", require("./routes/book/add"));
 app.use("/", require("./routes/book/ownedBooks"));
+app.use("/", require("./routes/book/rentedBooks"));
 app.use("/", require("./routes/request/add"));
 app.use("/", require("./routes/request/received"));
 app.use("/", require("./routes/request/sent"));
