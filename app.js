@@ -46,5 +46,7 @@ app.use("/", require("./routes/request/received"));
 app.use("/", require("./routes/request/sent"));
 app.use("/", require("./routes/request/accept"));
 app.use("/", require("./routes/request/reject"));
+app.use("/", require("./routes/request/detail"));
+app.use("/", require("./routes/request/update"));
 
 module.exports = app;

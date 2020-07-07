@@ -63,7 +63,8 @@ app.post("/book/add", (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log("error while saving a goal", err);
+      res.status(200).json({errorMessage:'error while saving a book, please try again later'});
+      //console.log("error while saving a goal", err);
       next(err);
     });
 });

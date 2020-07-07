@@ -4,13 +4,12 @@ const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 
 app.post("/login", (req, res, next) => {
-  
-    if (req.body.email === "" || req.body.password === "") {    
-        res.status(403).json({
-        errorMessage: "Please enter both, username and email to log in.",
-        });
-        return;
-    }
+  if (req.body.email === "" || req.body.password === "") {
+    res.status(403).json({
+      errorMessage: "Please enter both, username and email to log in.",
+    });
+    return;
+  }
 
   User.findOne({ email: req.body.email })
     .then((user) => {
@@ -22,7 +21,6 @@ app.post("/login", (req, res, next) => {
       }
 
       bcrypt.compare(req.body.password, user.password, function (err, match) {
-          debugger
         if (match) {
           req.session.currentUser = user;
           res.json(user);

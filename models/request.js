@@ -29,7 +29,7 @@ const requestSchema = new Schema({
     enum: ['Pending', 'Accepted', 'Rejected'],
     default:'Pending'
   },
-  comments:String
+  comments:[{}]
 }
 , {
   timestamps: true,
