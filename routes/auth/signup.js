@@ -39,7 +39,6 @@ app.post('/signup', (req, res, next) => {
                             res.json(user);
                         })
                         .catch((err) => {
-                            console.log('Error', err);
                             res.status(500).json({errorMessage: 'An error occurred while encrypting password.'})   
                         });
                     }

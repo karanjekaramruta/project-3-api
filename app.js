@@ -42,7 +42,9 @@ app.use("/", require("./routes/auth/logout"));
 app.use("/", require("./routes/book/add"));
 app.use("/", require("./routes/book/ownedBooks"));
 app.use("/", require("./routes/request/add"));
-app.use("/", require("./routes/request/all"));
+app.use("/", require("./routes/request/received"));
+app.use("/", require("./routes/request/sent"));
 app.use("/", require("./routes/request/accept"));
+app.use("/", require("./routes/request/reject"));
 
 module.exports = app;

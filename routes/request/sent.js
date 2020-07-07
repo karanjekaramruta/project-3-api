@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 const Request = require("../../models/request");
-const User = require("../../models/user");
-const Book = require("../../models/book");
 var bodyParser = require("body-parser");
 
 app.use(
@@ -11,13 +9,13 @@ app.use(
   })
 );
 
-//get all requests for a given user
-app.get("/request/all", (req, res, next) => {
+
+app.get("/request/sent", (req, res, next) => {
 
   debugger
-  const currentUserEmail = req.session.currentUser.email;
+  const currentUserId = req.session.currentUser._id;
 
-  Request.find({requestedTo:currentUserEmail})
+  Request.find({requestedFrom:currentUserId})
       .populate('bookId requestedFrom')
       .then((requests) => {
           res.status(200).json({requests})
