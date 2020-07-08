@@ -49,5 +49,7 @@ app.use("/", require("./routes/request/accept"));
 app.use("/", require("./routes/request/reject"));
 app.use("/", require("./routes/request/detail"));
 app.use("/", require("./routes/request/update"));
+app.use("/", require("./routes/comments/all"));
+
 
 module.exports = app;
